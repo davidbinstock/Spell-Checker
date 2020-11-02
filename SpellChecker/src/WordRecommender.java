@@ -1,9 +1,15 @@
 import java.util.ArrayList;
+import java.io.*;
 
 public class WordRecommender {
-
-//	public WordRecommender(String fileName) {}
+	private String filename;
+	private File dict;
 	
+	public WordRecommender(String filename) {
+		this.filename = filename;
+		dict = new File(filename);
+	}
+		
 	public double getSimilarity(String word1, String word2) {
 		//word1
 		ArrayList<Character> word1ArrayList=new ArrayList<>();
@@ -53,7 +59,12 @@ public class WordRecommender {
 		return similarity;
 		
 	}
-	
+	 public static void main(String[] args) {
+		System.out.println("hello");
+		WordRecommender wr = new WordRecommender("engDictionary.txt");
+		wr.getSimilarity("hair", "mare");
+		
+	}
 
 
 
