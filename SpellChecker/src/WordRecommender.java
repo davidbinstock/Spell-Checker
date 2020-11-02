@@ -152,7 +152,6 @@ public class WordRecommender {
 		WordRecommender wordRec = new WordRecommender("engDictionary.txt");
 		wordRec.getWordSuggestions("hair", 2, 0.75, 4);
 		//wordRec.getSimilarity("hair", "mare");
-		
 	}
 
 
