@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 import java.io.*;
 
 public class WordRecommender {
@@ -22,8 +21,8 @@ public class WordRecommender {
 		}
 		
 		//test if working, delete after
-		System.out.println(word1ArrayList);
-		System.out.println(revword1ArrayList);
+//		System.out.println(word1ArrayList);
+//		System.out.println(revword1ArrayList);
 		
 		//word2
 		ArrayList<Character> word2ArrayList=new ArrayList<>();
@@ -50,13 +49,13 @@ public class WordRecommender {
 			}
 		}
 		
-		double similarity = (leftSimilarity + rightSimilarity)/2;
+		double similarity = (leftSimilarity + rightSimilarity)/2.0;
 		
 		//return the figure, fix later
 		//print for testing, delete later
-		System.out.println(leftSimilarity);
-		System.out.println(rightSimilarity);
-		System.out.println(similarity);
+//		System.out.println("leftSimilarity: " + leftSimilarity);
+//		System.out.println("rightSimilarity: " + rightSimilarity);
+//		System.out.println("Similarity Score: " + similarity);
 		return similarity;
 		
 	}
@@ -123,6 +122,8 @@ public class WordRecommender {
 	
 	public ArrayList<String> getWordSuggestions(String word, int tolerance, double commonPercent, int topN){
 		ArrayList<String> suggestedWords = new ArrayList<String>();
+		String[] topNWordsArray = new String[topN];
+		// First get all the words that satisfy the tolerance and commonPercent criteria
 		try {
 			Scanner s = new Scanner(dict);
 			String nextWord;
@@ -138,20 +139,39 @@ public class WordRecommender {
 			}
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("The dictionary file could not be found");
 			e.printStackTrace();
 		}
-		for (int i = 0; i<suggestedWords.size(); i++) {
-			System.out.println(suggestedWords.get(i));
-		}
 		
+		//FIXME delete; for testing purposes
+//		for (int i = 1; i<suggestedWords.size(); i++) {
+//			System.out.print("i = " + i + ": ");
+//			System.out.print(getSimilarity(suggestedWords.get(i),word));
+//			System.out.println(suggestedWords.get(i));
+//		}
+		
+		//Next, find the topN words with the highest similarity
+		int currMaxIndex = 0;
+		boolean isNextMoreSimilar;
+		for (int n=0; n < topNWordsArray.length; n++) {
+			for (int i = 1; i<suggestedWords.size(); i++) {
+				isNextMoreSimilar = getSimilarity(suggestedWords.get(i),word) > getSimilarity(suggestedWords.get(currMaxIndex),word);
+				if(isNextMoreSimilar) {
+					currMaxIndex = i;
+				}
+			}
+//			System.out.println("max similarity at: " + currMaxIndex); //FIXME delete; for testing purposes
+			topNWordsArray[n] = suggestedWords.get(currMaxIndex);
+			suggestedWords.remove(currMaxIndex);	
+		}
+		System.out.println(Arrays.toString(topNWordsArray)); //FIXME delete; for testing purposes
 		return suggestedWords;
 	}
 	
 	public static void main(String[] args) {
 		WordRecommender wordRec = new WordRecommender("engDictionary.txt");
-		wordRec.getWordSuggestions("hair", 2, 0.75, 4);
-		//wordRec.getSimilarity("hair", "mare");
+		wordRec.getWordSuggestions("hairr", 2, 0.75, 6);
+		//wordRec.getSimilarity("oblige", "oblivion");
 	}
 
 
