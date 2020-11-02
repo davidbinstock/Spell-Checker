@@ -61,7 +61,7 @@ public class WordRecommender {
 		
 	}
 	
-	private ArrayList<Character> getLetters(String word) {
+	public ArrayList<Character> getLetters(String word) {
 		ArrayList<Character> letters = new ArrayList<Character>();
 		boolean inLetters;
 		for(int i=0; i < word.length(); i++) {
@@ -78,7 +78,7 @@ public class WordRecommender {
 		return letters;
 	}
 	
-	private double findCommonPercent(String word1, String word2) {
+	public double findCommonPercent(String word1, String word2) {
 		ArrayList<Character> letters1 = getLetters(word1);
 		ArrayList<Character> letters2 = getLetters(word2);
 		ArrayList<Character> allLetters = getLetters(word1); // start with all letters from word1 in all letters

@@ -18,5 +18,15 @@ class WordRecommenderTest {
 	void testGetWordSuggestions() {
 		fail("Not yet implemented");
 	}
+	
+	@Test
+	void testGetLetters() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	void testFindCommonPercent() {
+		fail("Not yet implemented");
+	}
 
 }
