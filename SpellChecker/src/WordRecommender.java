@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.io.*;
 
 public class WordRecommender {
@@ -59,10 +60,29 @@ public class WordRecommender {
 		return similarity;
 		
 	}
+	
+	
+	public ArrayList<String> getWordSuggestions(String word, int tolerance, double commonPercent, int topN){
+		ArrayList<String> suggestedWords = new ArrayList<String>();
+		try {
+			Scanner s = new Scanner(dict);
+			String nextWord;
+			while(s.hasNext()) {
+				nextWord = s.next();
+				System.out.println(nextWord);
+			}
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return suggestedWords;
+	}
 	 public static void main(String[] args) {
-		System.out.println("hello");
-		WordRecommender wr = new WordRecommender("engDictionary.txt");
-		wr.getSimilarity("hair", "mare");
+		WordRecommender wordRec = new WordRecommender("engDictionary.txt");
+		wordRec.getWordSuggestions("hair", 2, 0.75, 4);
+		//wordRec.getSimilarity("hair", "mare");
 		
 	}
 
