@@ -60,6 +60,13 @@ public class WordRecommender {
 		
 	}
 	
+	/**
+	 * Given a word (as a String) this method will return
+	 * an ArrayList of all unique letters (as characters); duplicate
+	 * letters appear in the array only once.
+	 * @param word
+	 * @return an ArrayList of chars representing the unique letters
+	 */
 	public ArrayList<Character> getLetters(String word) {
 		ArrayList<Character> letters = new ArrayList<Character>();
 		boolean inLetters;
@@ -77,6 +84,15 @@ public class WordRecommender {
 		return letters;
 	}
 	
+	/**
+	 * Given two words (as Strings) this method calculates the 
+	 * common percent; that is the total number of shared letters
+	 * divided by the total number of letters.
+	 * @param word1
+	 * @param word2
+	 * @return a double between 0.0 and 1.0 representing the 
+	 * percent of letters in common
+	 */
 	public double findCommonPercent(String word1, String word2) {
 		ArrayList<Character> letters1 = getLetters(word1);
 		ArrayList<Character> letters2 = getLetters(word2);
@@ -119,7 +135,17 @@ public class WordRecommender {
 		return commonPercent;
 	}
 	
-	
+	/**
+	 * This method takes in a word (as a string), a tolerance (as an integer)
+	 * a commonPercent (as a double), and a topN (as an integer), and returns 
+	 * the topN number of words with the highest similarity that meet the 
+	 * tolerance and commonPercent criteria 
+	 * @param word
+	 * @param tolerance
+	 * @param commonPercent
+	 * @param topN
+	 * @return an ArrayList of length "topN" of recommended replacement words
+	 */
 	public ArrayList<String> getWordSuggestions(String word, int tolerance, double commonPercent, int topN){
 		ArrayList<String> candidateWords = new ArrayList<String>();
 		ArrayList<String> suggestedWords = new ArrayList<String>();

@@ -7,7 +7,12 @@ public class Printer {
 		outputFileName = filename;
 	}
 	
-	public void printNextWord(String word) {
+	/**
+	 * Given a word as a String (actually any String) this
+	 * method will append it to the text file.
+	 * @param word The word (or String) to append
+	 */
+	public void appendWord(String word) {
 		try {
 			FileWriter fw = new FileWriter(outputFileName, true); //added this in order to get words to append
 			PrintWriter pw = new PrintWriter(fw);
@@ -22,6 +27,11 @@ public class Printer {
 		}
 	}
 	
+	/**
+	 * This method will clear the contents of the output file.
+	 * If the output file has not yet been created, this method
+	 * will also create the file.
+	 */
 	public void clearFile() {
 		try {
 			PrintWriter pw = new PrintWriter(outputFileName);
@@ -32,14 +42,23 @@ public class Printer {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * This method returns the string value of the name 
+	 * of the output text file 
+	 * @return the output file name as a String
+	 */
+	public String getFilename() {
+		return outputFileName;
+	}
 		
 	public static void main(String[] args) {
 		Printer p = new Printer("testout.txt");
 		p.clearFile();
-		p.printNextWord("hello");
-		p.printNextWord("what's");
-		p.printNextWord("the");
-		p.printNextWord("Skinny?");
+		p.appendWord("hello");
+		p.appendWord("what's");
+		p.appendWord("the");
+		p.appendWord("Skinny?");
 
 	}
 
