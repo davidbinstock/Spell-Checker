@@ -1,6 +1,12 @@
 import java.util.*;
 import java.io.*;
-
+/**
+ * This class has helps to identify words that are
+ * similar to potentially misspelled words
+ * 
+ * @author david binstock and esme shao
+ *
+ */
 public class WordRecommender {
 	private String filename;
 	private File dict;
@@ -203,15 +209,23 @@ public class WordRecommender {
 			suggestedWords.add(candidateWords.get(currMaxIndex));
 			candidateWords.remove(currMaxIndex);	
 		}
-		System.out.println(suggestedWords); //FIXME delete; for testing purposes
+//		System.out.println(suggestedWords); //FIXME delete; for testing purposes
 		return suggestedWords;
+	}
+	
+	public String prettyPrint(ArrayList<String> list) {
+		String outputString = "";
+		for(int i=0; i < list.size(); i++) {
+			outputString += (i+1) + ". " + list.get(i) + "\n";
+		}
+		return outputString;
 	}
 	
 	public static void main(String[] args) {
 		WordRecommender wordRec = new WordRecommender("engDictionary.txt");
-		wordRec.getWordSuggestions("hair", 2, 0.75, 3);
-		wordRec.getWordSuggestions("ewok", 1, 1.5, 3);
-		//wordRec.getSimilarity("oblige", "oblivion");
+		ArrayList sugs1 = wordRec.getWordSuggestions("hair", 2, 0.75, 3);
+		ArrayList sugs2 = wordRec.getWordSuggestions("ewok", 1, 1.5, 3);
+		System.out.println(wordRec.prettyPrint(sugs1));
 	}
 
 

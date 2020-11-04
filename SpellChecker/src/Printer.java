@@ -1,4 +1,10 @@
 import java.io.*;
+/**
+ * This class prints out strings to a file
+ * 
+ * @author david binstock and esme shao
+ *
+ */
 public class Printer {
 	
 	private String outputFileName;
