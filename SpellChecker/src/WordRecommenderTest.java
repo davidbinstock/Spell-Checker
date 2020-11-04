@@ -27,9 +27,13 @@ class WordRecommenderTest {
 	}
 
 	@Test
-	void testGetWordSuggestions() {
-		int expectedLength1 = 3;
-		assertEquals(expectedLength1, wordRec.getWordSuggestions("hairr", 2, 0.75, 3).size());
+	void testGetWordSuggestionsLengthLessThanOrEqalToTopN() {
+		int topN1 = 3;
+		assertTrue(topN1 >= wordRec.getWordSuggestions("hairr", 2, 0.75, topN1).size());
+		int topN2 = 4;
+		assertTrue(topN2 >= wordRec.getWordSuggestions("ofh", 2, 0.80, topN2).size());
+		int topN3 = 5;
+		assertTrue(topN3 >= wordRec.getWordSuggestions("alrigt", 2, 0.80, topN3).size());
 	}
 	
 	@Test

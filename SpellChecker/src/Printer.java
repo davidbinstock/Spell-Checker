@@ -52,20 +52,10 @@ public class Printer {
 	/**
 	 * This method returns the string value of the name 
 	 * of the output text file 
+	 * 
 	 * @return the output file name as a String
 	 */
 	public String getFilename() {
 		return outputFileName;
 	}
-		
-	public static void main(String[] args) {
-		Printer p = new Printer("testout.txt");
-		p.clearFile();
-		p.appendWord("hello");
-		p.appendWord("what's");
-		p.appendWord("the");
-		p.appendWord("Skinny?");
-
-	}
-
 }

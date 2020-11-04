@@ -6,20 +6,18 @@ public class Reader {
 	private File inputFile;
 	private Scanner s;
 	
-	public Reader(String filename) throws FileNotFoundException {
+	public Reader(String filename) throws FileNotFoundException { // throwing the exceptoion to be handled by the method that calls this
 		inputFileName = filename;
 		inputFile = new File(inputFileName);
 		s = new Scanner(inputFile);		
 	}
-	
-//	private void initializeScanner(File f) {
-//		
-//	}
-	
-//	public boolean setFile() {
-//		
-//	}
-	
+
+	/**
+	 * This method returns the next word in the file that is being 
+	 * spell-checked
+	 * 
+	 * @return the next word in the file (as a String)
+	 */
 	public String nextWord() {
 		if(s.hasNext()) {
 			return s.next();
@@ -29,27 +27,15 @@ public class Reader {
 		}
 	}
 	
-//	public void test() {
-//		for (int i=0; i<10; i++) {
-//			System.out.println(s.next());
-//		}
-//	}
-	
+	/**
+	 * This method determines if there is a next word in
+	 * the file that is being spell-checked and returns
+	 * true or false accordingly
+	 * 
+	 * @return a boolean true or false
+	 */
 	public boolean hasNextWord() {
 		return s.hasNext();
 	}
 	
-	
-	public static void main(String[] args) {
-//		
-//		Reader r;
-//		try {
-//			r = new Reader("test.txt");
-//			//System.out.println("all good");
-//			//r.test();
-//		} catch (FileNotFoundException e) {
-//			System.out.println("please enter a valid filename");
-//		}
-	}
-
 }
