@@ -225,10 +225,5 @@ public class WordRecommender {
 		}
 		return outputString;
 	}
-	
-	public static void main(String[] args) {
-		WordRecommender wordRec = new WordRecommender("engDictionary.txt");
-		wordRec.getWordSuggestions("alrigt", 2, 0.80, 5);
-	}
 }
 
